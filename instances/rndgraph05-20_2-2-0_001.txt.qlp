@@ -1,0 +1,137 @@
+MAXIMIZE
++alpha_1 +alpha_2 +alpha_3 +alpha_4 +alpha_5 +alpha_6 +alpha_7 
+SUBJECT TO
++z_1 +z_2 +z_3 +z_4 +z_5 +z_6 +z_7 <= 2
++x_1 +x_2 +x_3 +x_4 +x_5 +x_6 +x_7 <= 0
++alpha_1 +y_1 <= 1
++alpha_2 +y_2 <= 1
++alpha_3 +y_3 <= 1
++alpha_4 +y_4 <= 1
++alpha_5 +y_5 <= 1
++alpha_6 +y_6 <= 1
++alpha_7 +y_7 <= 1
++alpha_2 -alpha_1 -x_2 -z_2 <= 0
++alpha_3 -alpha_2 -x_3 -z_3 <= 0
++alpha_7 -alpha_3,6),(6 -x_7 -z_7 <= 0
++alpha_4 -alpha_5 -x_4 -z_4 <= 0
++alpha_3),(4,7 -alpha_4 -x_3),(4,7 -z_3),(4,7 <= 0
+UNCERTAINTY SUBJECT TO
++y_1 +y_2 +y_3 +y_4 +y_5 +y_6 +y_7 <= 2
++y_1 +z_1 <= 1
++y_2 +z_2 <= 1
++y_3 +z_3 <= 1
++y_4 +z_4 <= 1
++y_5 +z_5 <= 1
++y_6 +z_6 <= 1
++y_7 +z_7 <= 1
+BOUNDS
+0<=x_1<=1
+0<=y_1<=1
+0<=z_1<=1
+0<=alpha_1<=1
+0<=x_2<=1
+0<=y_2<=1
+0<=z_2<=1
+0<=alpha_2<=1
+0<=x_3<=1
+0<=y_3<=1
+0<=z_3<=1
+0<=alpha_3<=1
+0<=x_4<=1
+0<=y_4<=1
+0<=z_4<=1
+0<=alpha_4<=1
+0<=x_5<=1
+0<=y_5<=1
+0<=z_5<=1
+0<=alpha_5<=1
+0<=x_6<=1
+0<=y_6<=1
+0<=z_6<=1
+0<=alpha_6<=1
+0<=x_7<=1
+0<=y_7<=1
+0<=z_7<=1
+0<=alpha_7<=1
+BINARIES
+x_1
+y_1
+z_1
+x_2
+y_2
+z_2
+x_3
+y_3
+z_3
+x_4
+y_4
+z_4
+x_5
+y_5
+z_5
+x_6
+y_6
+z_6
+x_7
+y_7
+z_7
+EXISTS
+x_1
+z_1
+alpha_1
+x_2
+z_2
+alpha_2
+x_3
+z_3
+alpha_3
+x_4
+z_4
+alpha_4
+x_5
+z_5
+alpha_5
+x_6
+z_6
+alpha_6
+x_7
+z_7
+alpha_7
+ALL
+y_1
+y_2
+y_3
+y_4
+y_5
+y_6
+y_7
+ORDER
+z_1
+z_2
+z_3
+z_4
+z_5
+z_6
+z_7
+y_1
+y_2
+y_3
+y_4
+y_5
+y_6
+y_7
+x_1
+x_2
+x_3
+x_4
+x_5
+x_6
+x_7
+alpha_1
+alpha_2
+alpha_3
+alpha_4
+alpha_5
+alpha_6
+alpha_7
+END
