@@ -1,21 +1,7 @@
 import os
  
 # Use raw string to avoid issues with backslashes
-directory = r'raw'
-
-# Check if the directory exists
-if not os.path.isdir(directory):
-    print(f"The directory '{directory}' does not exist.")
-else:
-    for filename in os.listdir(directory):
-        print(filename)
-        
-        # Construct the full file path
-        filepath = os.path.join(directory, filename)
-        
-        with open(filepath, 'r') as f:
-            lines = f.readlines()
-            print(lines)  # Printing lines just to show it worked
+directory = 'raw/'
 for Filename in os.listdir(directory):
     print(Filename) 
 
@@ -24,10 +10,10 @@ for Filename in os.listdir(directory):
 
     SplitFilename=Filename.split('_')
     Data=SplitFilename[1].split('-')
-    print(Data)
-    Omega=Data[0]
-    Theta=Data[1]
-    Lambda=Data[2]
+    # print(Data)
+    # Omega=Data[0]
+    # Theta=Data[1]
+    # Lambda=Data[2]
 
     Arcs=[]
     for line in lines:
@@ -35,8 +21,15 @@ for Filename in os.listdir(directory):
             content = line[6:-3].split('), (')
         if line[0]=='V' and line[2]=='=':
             nodes = line[5:-2].split(', ')
+        if line.startswith("Omega"):
+            Omega = line.split("=")[1]
+        if line.startswith("Theta"):
+            Theta = line.split("=")[1]
+        if line.startswith("Lambda"):
+            Lambda = line.split("=")[1]
     for arc in content:
         Arcs.append(arc.split(', '))
+    
 
 #Access arc i by Arcs[i][0] and Arcs[i][1]
     with open('Instances_PolyQIP/'+Filename+'.qlp', 'w') as f:
