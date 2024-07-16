@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 
 # Datei öffnen und Zeilen lesen
 def read_raw():
-    with open('raw/rndgraph0.1-20_3-1-3_001.txt', 'r') as file:
+    with open('raw/rndgraph0.1-20_2-2-1_001.txt', 'r') as file:
         lines = file.readlines()
 
     # Initialisierung der Variablen
@@ -29,7 +29,7 @@ def read_solution():
     y_variablen = []
     z_variablen = []
     a_variablen = []
-    tree = ET.parse('solutions/rndgraph0.1-20_3-1-3_001.qlp.sol')
+    tree = ET.parse('solutions/rndgraph0.1-20_2-2-1_001.qlp.sol')
     root = tree.getroot()
 
     for variable in root.findall('.//variable'):
@@ -60,15 +60,15 @@ def plott_solution(A,V,x_variablen, y_variablen, z_variablen, a_variablen):
 
     for node in V:
         if node in x_variablen:
-            node_colors.append('blue')
+            node_colors.append('green')
         elif node in y_variablen:
             node_colors.append('purple')
         elif node in z_variablen:
-            node_colors.append('green')
+            node_colors.append('blue')
         elif node in a_variablen:
-            node_colors.append('red')
-        else:
             node_colors.append('lightblue')
+        else:
+            node_colors.append('red')
 
     # Netzwerk visualisieren
     plt.figure(figsize=(14, 8))

@@ -117,9 +117,9 @@ def write_raw(nodes,arcs,Omega ,Theta, Lambda, Number="001"):
 
 
 if __name__ == "__main__":
-    Omega = 3
-    Theta = 1
-    Lamda = 3
+    Omega = 2
+    Theta = 2
+    Lamda = 1
     Density = 0.10
     Num_nodes = 20
     nodes, arcs = create_rnd_graph(Num_nodes,Density,)
