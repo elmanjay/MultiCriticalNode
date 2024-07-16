@@ -107,14 +107,23 @@ def create_rnd_graph(num_nodes,Density):
             arcs.append((u, v))
     return nodes, arcs
 
+def write_raw(nodes,arcs,Omega ,Theta, Lambda, Number="001"):
+    with open(f'raw/rndgraph{Density}-{len(nodes)}_{Omega}-{Theta}-{Lambda}_{Number}.txt', 'w') as f:
+        f.write(f"V = {nodes} \n")
+        f.write(f"A = {arcs} \n")
+        f.write(f"Omega = {Omega} \n")
+        f.write(f"Theta = {Theta} \n")
+        f.write(f"Lamnda = {Lambda} \n")
+
 
 if __name__ == "__main__":
     Omega = 3
-    Theta = 3
+    Theta = 1
     Lamda = 3
-    Density = 0.05
+    Density = 0.10
     Num_nodes = 20
     nodes, arcs = create_rnd_graph(Num_nodes,Density,)
     create_instance(nodes,arcs,Omega,Theta,Lamda)
+    write_raw(nodes,arcs,Omega,Theta,Lamda)
     
 
