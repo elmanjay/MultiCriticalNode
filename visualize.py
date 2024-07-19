@@ -1,6 +1,7 @@
 import os
 import ast
 import networkx as nx
+import pandas as pd
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
 
@@ -47,8 +48,34 @@ def read_solution():
                 a_variablen.append(int(name.split("_")[1]))
 
     return x_variablen, y_variablen, z_variablen, a_variablen 
+
+def create_train_data(A,V,x_variablen, y_variablen, z_variablen, a_variablen):
+    edges_df = pd.DataFrame(A, columns=["source", "target"])
+    nodes_df = pd.DataFrame()
+    nodes_df["node_id"] = V
+
+    #Krank
+    nodes_df['label'] = 0
+
+    #Gesund
+    for a in a_variablen:
+        nodes_df.loc[nodes_df['node_id'] == a, 'label'] = 1
+
+    #Heilen
+    for x in x_variablen:
+        nodes_df.loc[nodes_df['node_id'] == x, 'label'] = 2
     
+    #Infizieren
+    for y in y_variablen:
+        nodes_df.loc[nodes_df['node_id'] == y, 'label'] = 3
     
+    #Impfen
+    for z in z_variablen:
+        nodes_df.loc[nodes_df['node_id'] == z, 'label'] = 4
+
+    return nodes_df, edges_df
+    
+   
 
 def plott_solution(A,V,x_variablen, y_variablen, z_variablen, a_variablen):
     G = nx.DiGraph()
@@ -84,6 +111,9 @@ def plott_solution(A,V,x_variablen, y_variablen, z_variablen, a_variablen):
 if __name__ == "__main__":
     x, y, z, a = read_solution()
     A,V = read_raw()
+    df1,df2 = create_train_data(A,V,x, y, z, a)
+    print(df1)
     plott_solution(A,V,x,y,z,a)
+
 
 
