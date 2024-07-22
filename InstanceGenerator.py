@@ -29,7 +29,7 @@ def load_file(path):
         
 def create_instance(nodes,Arcs,Omega ,Theta, Lambda, Number="001"):
 #Access arc i by Arcs[i][0] and Arcs[i][1]
-    with open(f'instances/rndgraph{Density}-{len(nodes)}_{Omega}-{Theta}-{Lambda}_{Number}.qlp', 'w') as f:
+    with open(f'instances/modeltrain/rndgraph{Density}-{len(nodes)}_{Omega}-{Theta}-{Lambda}_{Number}.qlp', 'w') as f:
         f.write('MAXIMIZE\n')
         for v in nodes:
                 f.write('+alpha_'+str(v)+' ')
@@ -122,8 +122,10 @@ if __name__ == "__main__":
     Lamda = 1
     Density = 0.10
     Num_nodes = 20
-    nodes, arcs = create_rnd_graph(Num_nodes,Density,)
-    create_instance(nodes,arcs,Omega,Theta,Lamda)
-    write_raw(nodes,arcs,Omega,Theta,Lamda)
+    
+    for i in range (1,31):
+        nodes, arcs = create_rnd_graph(Num_nodes,Density)
+        create_instance(nodes,arcs,Omega,Theta,Lamda,Number= f"00{str(i)}")
+        write_raw(nodes,arcs,Omega,Theta,Lamda,Number= f"00{str(i)}")
     
 
